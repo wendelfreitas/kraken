@@ -1,8 +1,6 @@
-import { mergeResolvers } from 'merge-graphql-schemas';
+import path from 'path';
+import { fileLoader, mergeResolvers } from 'merge-graphql-schemas';
 
-import Auth from './Auth/resolvers';
-import User from './User/resolvers';
-
-const resolvers = [Auth, User];
+const resolvers = fileLoader(path.join(__dirname, './**/resolvers'));
 
 export default mergeResolvers(resolvers);

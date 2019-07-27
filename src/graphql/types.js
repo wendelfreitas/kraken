@@ -1,8 +1,6 @@
-import { mergeTypes } from 'merge-graphql-schemas';
+import path from 'path';
+import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
 
-import Auth from './Auth/schema.gql';
-import User from './User/schema.gql';
-
-const typeDefs = [Auth, User];
+const typeDefs = fileLoader(path.join(__dirname, './**/schema.gql'));
 
 export default mergeTypes(typeDefs);
